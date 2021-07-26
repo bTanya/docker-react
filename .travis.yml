@@ -1,0 +1,11 @@
+sudo: requiered
+services:
+    - docker
+
+
+before_install:
+    - docker build -t kotanya/docker-react -f Dockerfile.dev .
+
+scripts:
+    - docker run -e CI=true kotanya/docker-react npm run test -- --coverage
+
